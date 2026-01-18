@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reflex Trainer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Confetti fullscreen -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <h1 class="main-title" id="main-title">REFLEXTRAINER</h1>
+
+  <button id="inlevel-back-btn" class="inlevel-back-btn" type="button">Zurück</button>
+
+  <div id="start-screen" class="screen active start-screen">
+    <div class="start-block">
+      <button id="start-btn" class="start-button" type="button">START</button>
+    </div>
+  </div>
+
+  <div id="menu" class="screen menu-screen">
+    <div class="levels-container">
+      <button class="level-btn unlocked" data-level="1" data-max-time="4000"
+        data-desc="Klicke so schnell wie möglich auf das erscheinende Feld." type="button">
+        <span class="level-label">Reaktionsfeld</span>
+      </button>
+
+      <button class="level-btn locked" data-level="2" data-max-time="3500"
+        data-desc="Klicke <span class='desc-true'>WAHR</span> wenn Wort und Schriftfarbe übereinstimmen, sonst <span class='desc-false'>FALSCH</span>."
+        type="button">
+        <span class="level-label">Farbspiel</span>
+      </button>
+
+      <button class="level-btn locked" data-level="3" data-max-time="15000"
+        data-desc="Merke dir die Sequenz und klicke sie korrekt nach." type="button">
+        <span class="level-label">Simon-Sequenz</span>
+      </button>
+
+      <button class="level-btn locked" data-level="4" data-max-time="20000"
+        data-desc="Finde alle Paare so schnell wie möglich." type="button">
+        <span class="level-label">Memory</span>
+      </button>
+
+      <button id="menu-back-btn" class="action-btn secondary" type="button">Zurück</button>
+    </div>
+  </div>
+
+  <div id="level-prep" class="screen">
+    <h2 id="prep-title"></h2>
+    <p id="prep-desc"></p>
+    <p id="prep-max-time"></p>
+
+    <div class="prep-buttons">
+      <button id="start-level" class="action-btn primary large" type="button">START</button>
+      <button id="back-to-menu" class="action-btn secondary" type="button">Zurück</button>
+    </div>
+  </div>
+
+  <div id="countdown" class="countdown-screen">
+    <div id="countdown-display">3</div>
+    <p id="countdown-text"></p>
+  </div>
+
+  <div id="game-screen" class="screen">
+    <div class="game-header">
+      <h2 id="level-name"></h2>
+      <div class="stats">
+        <span class="stats-label">Runden&nbsp;</span>
+        <span class="stats-num" id="round">1</span>
+        <span class="stats-slash">/</span>
+        <span class="stats-total">5</span>
+      </div>
+    </div>
+    <div id="game-area" class="game-area"></div>
+  </div>
+
+  <div id="results-screen" class="screen">
+    <div class="results-content">
+      <h2 id="results-title">Level abgeschlossen</h2>
+
+      <div id="results-stats"></div>
+      <div id="level-status"></div>
+
+      <div class="results-win-buttons" id="results-win-buttons">
+        <button id="retry-btn" class="action-btn action-btn-equal secondary" type="button">Wiederholen</button>
+        <button id="next-level-btn" class="action-btn action-btn-equal primary" type="button">Nächstes Level</button>
+      </div>
+
+      <div class="results-lose-buttons" id="results-lose-buttons">
+        <button id="retry-btn-lose" class="action-btn action-btn-equal secondary" type="button">Wiederholen</button>
+      </div>
+
+      <button id="menu-btn" class="menu-link-btn" type="button">Menü</button>
+
+      <div id="end-menu" class="end-menu" style="display:none;">
+        <h2 class="end-title">Spiel erfolgreich abgeschlossen</h2>
+
+        <div class="end-actions">
+          <button id="end-restart-btn" class="action-btn action-btn-equal primary end-small-btn" type="button">
+            Nochmal spielen
+          </button>
+          <button id="end-to-menu-btn" class="action-btn action-btn-equal secondary end-small-btn" type="button">
+            Zum Menü
+          </button>
+          <button id="end-results-btn" class="action-btn action-btn-equal secondary end-small-btn" type="button">
+            Ergebnisse
+          </button>
+        </div>
+
+        <button id="end-reset-progress-btn" class="menu-link-btn" type="button">Fortschritt zurücksetzen</button>
+
+        <div id="end-results-panel" class="end-results-panel" style="display:none;">
+          <h3 class="end-results-title">DEINE ZEITEN</h3>
+          <div id="end-results-content" class="end-results-content"></div>
+          <button id="end-results-close-btn" class="menu-link-btn" type="button">Schließen</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
